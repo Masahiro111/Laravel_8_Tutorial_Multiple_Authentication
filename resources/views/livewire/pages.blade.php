@@ -17,6 +17,7 @@
                 <x-jet-label for="title" value="{{ __('Title') }}" />
                 <x-jet-input id="title" class="block mt-1 w-full" type="text" name="title"
                     wire:model.debounce.800ms="title" required />
+                @error('title') <span class="error">{{ $message }}</span> @enderror
             </div>
 
             <div class="mt-4">
@@ -30,6 +31,7 @@
                         class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                         placeholder="url-slug">
                 </div>
+                @error('slug') <span class="error">{{ $message }}</span> @enderror
             </div>
 
             <div class="mt-4">
@@ -42,6 +44,7 @@
                         </div>
                     </div>
                 </div>
+                @error('content') <span class="error">{{ $message }}</span> @enderror
             </div>
 
         </x-slot>
