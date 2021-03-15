@@ -5,10 +5,11 @@ namespace App\Http\Livewire;
 use App\Models\Page;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
-
+use Livewire\WithPagination;
 
 class Pages extends Component
 {
+    use WithPagination;
     public $modalFormVisible = false;
     public $slug;
     public $title;
@@ -23,6 +24,11 @@ class Pages extends Component
             'slug' => ['required', Rule::unique('pages', 'slug')],
             'content' => 'required',
         ];
+    }
+
+    public function mount()
+    {
+        $this->resetPage();
     }
 
     public function updatedTitle($value)
@@ -45,7 +51,9 @@ class Pages extends Component
 
     public function update()
     {
-        dd("update");
+        $this->validate();
+        Page::find($this->modelId)->update($this->modelData());
+        $this->modalFormVisible = false;
     }
 
     public function createShowModal()
@@ -58,6 +66,7 @@ class Pages extends Component
     public function updateShowModal($id)
     {
         $this->resetValidation();
+        $this->resetVars();
         $this->modelId = $id;
         $this->modalFormVisible = true;
         $this->loadModel();

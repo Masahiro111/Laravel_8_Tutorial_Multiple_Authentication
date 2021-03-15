@@ -41,7 +41,10 @@
                                     <p class="text-sm text-gray-900">{{ $item->title}}</p>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <p class="text-sm text-gray-900">{{ $item->slug}}</p>
+                                    <p class="text-sm text-gray-900">
+                                        <a href="{{URL::to('/' . $item->slug)}}" target="_blank"
+                                            class="text-blue-600 underline hover:text-blue-800">{{$item->slug}}</a>
+                                    </p>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     <p class="text-sm text-gray-900">{!! $item->content !!}</p>
@@ -68,6 +71,10 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="mt-6">
+        {{$data->links()}}
     </div>
 
     <!-- Modal area -->
