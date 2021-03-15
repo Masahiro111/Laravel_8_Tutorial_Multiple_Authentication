@@ -37,6 +37,11 @@ class Pages extends Component
         $this->resetVars();
     }
 
+    public function read()
+    {
+        return Page::paginate(5);
+    }
+
     public function createShowModal()
     {
         $this->modalFormVisible = true;
@@ -67,6 +72,8 @@ class Pages extends Component
 
     public function render()
     {
-        return view('livewire.pages');
+        return view('livewire.pages', [
+            'data' => $this->read(),
+        ]);
     }
 }
