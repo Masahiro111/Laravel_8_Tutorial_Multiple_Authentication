@@ -73,7 +73,7 @@
     <!-- Modal area -->
     <x-jet-dialog-modal wire:model="modalFormVisible">
         <x-slot name="title">
-            {{ __('Save Page') }}
+            {{ __('Save Page') }} {{$modelId}}
         </x-slot>
 
         <x-slot name="content">
@@ -91,8 +91,8 @@
                         class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                         http://localhost:8000/
                     </span>
-                    <input wire:model="slug"
-                        class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                    <input wire:model="slug" type="text"
+                        class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
                         placeholder="url-slug">
                 </div>
                 @error('slug') <span class="error">{{ $message }}</span> @enderror
@@ -118,9 +118,17 @@
                 {{ __('Cancel') }}
             </x-jet-secondary-button>
 
-            <x-jet-button class="ml-2" wire:click="create" wire:loading.attr="disabled">
-                {{ __('Save') }}
+            @if ($modelId)
+            <x-jet-button class="ml-2" wire:click="update" wire:loading.attr="disabled">
+                {{ __('Update') }}
             </x-jet-button>
+            @else
+            <x-jet-button class="ml-2" wire:click="create" wire:loading.attr="disabled">
+                {{ __('Create') }}
+            </x-jet-button>
+            @endif
+
+
         </x-slot>
     </x-jet-dialog-modal>
 
