@@ -38,7 +38,14 @@
                             @foreach($data as $item)
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <p class="text-sm text-gray-900">{{ $item->title}}</p>
+                                    <p class="text-sm text-gray-900">
+                                        {{ $item->title}}
+                                        {!! $item->is_default_home ? '<span
+                                            class="text-green-400 text-xs font-bold">[Default Home Page]</span>':'' !!}
+                                        {!! $item->is_default_not_found ? '<span
+                                            class="text-red-400 text-xs font-bold">[Default 404 Page]</span>':'' !!}
+
+                                    </p>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <p class="text-sm text-gray-900">
@@ -106,10 +113,17 @@
             </div>
             <div class="mt-4">
                 <label for="">
-                    <input type="checkbox" value="{{$isSetToDefaultHomePage}}" wire:model="isSetToDefaultHomePage">
-                    <span>Set as the fefault home page.</span>
+                    <input class="form-checkbox" type="checkbox" value="{{$isSetToDefaultHomePage}}"
+                        wire:model="isSetToDefaultHomePage">
+                    <span class="ml-2 text-sm text-gray-600">Set as the fefault home page.</span>
                 </label>
-
+            </div>
+            <div class="mt-4">
+                <label for="">
+                    <input class="form-checkbox" type="checkbox" value="{{$isSetToDefaultNotFoundPage}}"
+                        wire:model="isSetToDefaultNotFoundPage">
+                    <span class="ml-2 text-sm text-red-600">Set as the fefault error 404 page.</span>
+                </label>
             </div>
             <div class="mt-4">
                 <x-jet-label for="content" value="{{ __('Content') }}" />

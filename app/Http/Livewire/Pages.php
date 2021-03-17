@@ -16,8 +16,8 @@ class Pages extends Component
     public $title;
     public $content;
     public $modelId;
-    public $isSetToDefaultHomePage;
-    public $isSetToDefaultNotFoundPage;
+    public $isSetToDefaultHomePage = false;
+    public $isSetToDefaultNotFoundPage = false;
 
 
     public function rules()
@@ -37,6 +37,16 @@ class Pages extends Component
     public function updatedTitle($value)
     {
         $this->generateSlug($value);
+    }
+
+    public function updatedIsSetToDefaultHomePage()
+    {
+        $this->isSetToDefaultNotFoundPage = null;
+    }
+
+    public function updatedIsSetToDefaultNotFoundPage()
+    {
+        $this->isSetToDefaultHomePage  = null;
     }
 
     public function create()
@@ -94,6 +104,8 @@ class Pages extends Component
         $this->title = $data->title;
         $this->slug = $data->slug;
         $this->content = $data->content;
+        $this->isSetToDefaultHomePage = !$data->is_default_home ? null : true;
+        $this->isSetToDefaultNotFoundPage = !$data->is_default_not_found ? null : true;
     }
 
     public function modelData()
@@ -102,6 +114,8 @@ class Pages extends Component
             'title' => $this->title,
             'slug' => $this->slug,
             'content' => $this->content,
+            'is_default_home' => $this->isSetToDefaultHomePage,
+            'is_default_not_found' => $this->isSetToDefaultNotFoundPage,
         ];
     }
 
@@ -111,6 +125,8 @@ class Pages extends Component
         $this->title = null;
         $this->slug = null;
         $this->content = null;
+        $this->isSetToDefaultHomePage = null;
+        $this->isSetToDefaultNotFoundPage = null;
     }
 
     private function generateSlug($value)
