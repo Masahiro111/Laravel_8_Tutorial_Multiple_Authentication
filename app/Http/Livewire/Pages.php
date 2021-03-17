@@ -16,6 +16,8 @@ class Pages extends Component
     public $title;
     public $content;
     public $modelId;
+    public $isSetToDefaultHomePage;
+    public $isSetToDefaultNotFoundPage;
 
 
     public function rules()

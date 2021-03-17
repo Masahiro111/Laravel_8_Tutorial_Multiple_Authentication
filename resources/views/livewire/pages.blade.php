@@ -104,7 +104,13 @@
                 </div>
                 @error('slug') <span class="error">{{ $message }}</span> @enderror
             </div>
+            <div class="mt-4">
+                <label for="">
+                    <input type="checkbox" value="{{$isSetToDefaultHomePage}}" wire:model="isSetToDefaultHomePage">
+                    <span>Set as the fefault home page.</span>
+                </label>
 
+            </div>
             <div class="mt-4">
                 <x-jet-label for="content" value="{{ __('Content') }}" />
                 <div class="rounded-md shadow-sm">
