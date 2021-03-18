@@ -112,16 +112,16 @@
                 @error('slug') <span class="error">{{ $message }}</span> @enderror
             </div>
             <div class="mt-4">
-                <label for="">
-                    <input class="form-checkbox" type="checkbox" value="{{$isSetToDefaultHomePage}}"
-                        wire:model="isSetToDefaultHomePage">
+                <label for="isSetToDefaultHomePage">
+                    <input id="isSetToDefaultHomePage" class="form-checkbox" type="checkbox"
+                        value="{{$isSetToDefaultHomePage}}" wire:model="isSetToDefaultHomePage">
                     <span class="ml-2 text-sm text-gray-600">Set as the fefault home page.</span>
                 </label>
             </div>
             <div class="mt-4">
-                <label for="">
-                    <input class="form-checkbox" type="checkbox" value="{{$isSetToDefaultNotFoundPage}}"
-                        wire:model="isSetToDefaultNotFoundPage">
+                <label for="isSetToDefaultNotFoundPage">
+                    <input id="isSetToDefaultNotFoundPage" class="form-checkbox" type="checkbox"
+                        value="{{$isSetToDefaultNotFoundPage}}" wire:model="isSetToDefaultNotFoundPage">
                     <span class="ml-2 text-sm text-red-600">Set as the fefault error 404 page.</span>
                 </label>
             </div>
