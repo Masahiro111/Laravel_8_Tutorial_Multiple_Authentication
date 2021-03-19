@@ -1,45 +1,214 @@
-<div>
-    <nav class="bg-gray-900 px-3 py-2 flex items-center">
-        <div class="" x-show="!show">
-            <button class="block h-8 mr-3 item-center">
-                <svg class="text-gray-400 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M6 7H18V9H6V7Z" fill="black" />
-                    <path d="M6 11H18V13H6V11Z" fill="black" />
-                    <path d="M18 15H6V17H18V15Z" fill="black" />
+<nav id="header" class="fixed w-full z-10 top-0 bg-white border-b border-gray-400">
+    <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-4">
+        <div class="pl-4 flex items-center">
+            <svg class="h-5 pr-3 fill-current text-purple-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path
+                    d="M0 2C0 .9.9 0 2 0h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm14 12h4V2H2v12h4c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2zM5 9l2-2 2 2 4-4 2 2-6 6-4-4z" />
+            </svg>
+            <a class="text-gray-900 text-base no-underline hover:no-underline font-extrabold text-xl" href="#">
+                Help Article
+            </a>
+        </div>
+        <div class="block lg:hidden pr-4">
+            <button id="nav-toggle"
+                class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-gray-900 hover:border-purple-500 appearance-none focus:outline-none">
+                <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <title>Menu</title>
+                    <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
                 </svg>
             </button>
         </div>
-        <div class="h-12 w-full flex items-center">
-            <a href="{{ url('/') }}" class="w-full">
-                <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="block h-6 w-auto">
-                    <path
-                        d="M11.395 44.428C4.557 40.198 0 32.632 0 24 0 10.745 10.745 0 24 0a23.891 23.891 0 0113.997 4.502c-.2 17.907-11.097 33.245-26.602 39.926z"
-                        fill="#6875F5"></path>
-                    <path
-                        d="M14.134 45.885A23.914 23.914 0 0024 48c13.255 0 24-10.745 24-24 0-3.516-.756-6.856-2.115-9.866-4.659 15.143-16.608 27.092-31.75 31.751z"
-                        fill="#6875F5"></path>
-                </svg>
-            </a>
-        </div>
-        <div class="flex justify-end">
-            <ul class="text-gray-200 text-xs">
-                <a href="">
-                    <li class="">Login</li>
-                </a>
+        <div class="w-full flex-grow lg:flex  lg:content-center lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 z-20"
+            id="nav-content">
+            <div class="flex-1 w-full mx-auto max-w-sm content-center py-4 lg:py-0">
+                <div class="relative pull-right pl-4 pr-4 md:pr-0">
+                    <input type="search" placeholder="Search"
+                        class="w-full bg-gray-100 text-sm text-gray-800 transition border focus:outline-none focus:border-purple-500 rounded py-1 px-2 pl-10 appearance-none leading-normal">
+                    <div class="absolute search-icon" style="top: 0.375rem;left: 1.75rem;">
+                        <svg class="fill-current pointer-events-none text-gray-800 w-4 h-4"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path
+                                d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <ul class="list-reset lg:flex justify-end items-center">
+                <li class="mr-3 py-2 lg:py-0">
+                    <a class="inline-block py-2 px-4 text-gray-900 font-bold no-underline"
+                        href="{{url('home')}}">Home</a>
+                </li>
+                <li class="mr-3 py-2 lg:py-0">
+                    <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:underline py-2 px-4"
+                        href="{{ url('/about') }}">About</a>
+                </li>
+                <li class="mr-3 py-2 lg:py-0">
+                    <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:underline py-2 px-4"
+                        href="{{ url('/contact') }}">Contact</a>
+                </li>
+                <li class="mr-3 py-2 lg:py-0">
+                    <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:underline py-2 px-4"
+                        href="{{ url('/login') }}">Login</a>
+                </li>
             </ul>
         </div>
-    </nav>
-    <div>
-        <aside>
-
-        </aside>
     </div>
-    <main>
-        <section>
-            <h1>{{ $title }}</h1>
-            <article>
-                {!! $content !!}
-            </article>
-        </section>
-    </main>
+</nav>
+<!--Container-->
+<div class="container w-full flex flex-wrap mx-auto px-24 pt-8 lg:pt-16 mt-16">
+    <div class="w-full lg:w-1/5 lg:px-6 text-xl text-gray-800 leading-normal">
+        <p class="text-base font-bold py-2 lg:pb-6 text-gray-700">Menu</p>
+        <div class="block lg:hidden sticky inset-0">
+            <button id="menu-toggle"
+                class="flex w-full justify-end px-3 py-3 bg-white lg:bg-transparent border rounded border-gray-600 hover:border-purple-500 appearance-none focus:outline-none">
+                <svg class="fill-current h-3 float-right" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                </svg>
+            </button>
+        </div>
+        <div class="w-full sticky inset-0 hidden h-64 lg:h-auto overflow-x-hidden overflow-y-auto lg:overflow-y-hidden lg:block mt-0 border border-gray-400 lg:border-transparent bg-white shadow lg:shadow-none lg:bg-transparent z-20"
+            style="top:5em;" id="menu-content">
+            <ul class="list-reset">
+                <li class="py-2 md:my-0 hover:bg-purple-100 lg:hover:bg-transparent">
+                    <a href="#"
+                        class="block pl-4 align-middle text-gray-700 no-underline hover:text-purple-500 border-l-4 border-transparent lg:border-purple-500 lg:hover:border-purple-500">
+                        <span class="pb-1 md:pb-0 text-sm text-gray-900 font-bold">Home</span>
+                    </a>
+                </li>
+                <li class="py-2 md:my-0 hover:bg-purple-100 lg:hover:bg-transparent">
+                    <a href="#"
+                        class="block pl-4 align-middle text-gray-700 no-underline hover:text-purple-500 border-l-4 border-transparent lg:hover:border-gray-400">
+                        <span class="pb-1 md:pb-0 text-sm">Tasks</span>
+                    </a>
+                </li>
+                <li class="py-2 md:my-0 hover:bg-purple-100 lg:hover:bg-transparent">
+                    <a href="#"
+                        class="block pl-4 align-middle text-gray-700 no-underline hover:text-purple-500 border-l-4 border-transparent lg:hover:border-gray-400">
+                        <span class="pb-1 md:pb-0 text-sm">Messages</span>
+                    </a>
+                </li>
+                <li class="py-2 md:my-0 hover:bg-purple-100 lg:hover:bg-transparent">
+                    <a href="#"
+                        class="block pl-4 align-middle text-gray-700 no-underline hover:text-purple-500 border-l-4 border-transparent lg:hover:border-gray-400">
+                        <span class="pb-1 md:pb-0 text-sm">Analytics</span>
+                    </a>
+                </li>
+                <li class="py-2 md:my-0 hover:bg-purple-100 lg:hover:bg-transparent">
+                    <a href="#"
+                        class="block pl-4 align-middle text-gray-700 no-underline hover:text-purple-500 border-l-4 border-transparent lg:hover:border-gray-400">
+                        <span class="pb-1 md:pb-0 text-sm">Payments</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div
+        class="w-full lg:w-4/5 p-12 mt-6 lg:mt-0 text-gray-900 leading-normal bg-white border border-gray-400 border-rounded">
+        <!--Title-->
+        <div class="font-sans">
+            <span class="text-base text-purple-500 font-bold">&laquo;</span> <a href="#"
+                class="text-base md:text-sm text-purple-500 font-bold no-underline hover:underline">Back Link</a>
+            <h1 class="font-sans break-normal text-gray-900 pt-6 pb-2 text-xl">{{$title}}</h1>
+            <hr class="border-b border-gray-400">
+        </div>
+        <!--Post Content-->
+        <!--Lead Para-->
+        <p class="py-6">
+            {!! $content !!}
+        </p>
+
+        <!--/ Post Content-->
+
+    </div>
+    <!--Back link -->
+    <div class="w-full lg:w-4/5 lg:ml-auto text-base md:text-sm text-gray-500 px-4 py-6">
+        <span class="text-base text-purple-500 font-bold">&lt;</span> <a href="#"
+            class="text-base md:text-sm text-purple-500 font-bold no-underline hover:underline">Back to Help</a>
+    </div>
+</div>
+<!--/container-->
+<footer class="bg-white border-t border-gray-400 shadow">
+    <div class="container mx-auto flex py-8">
+        <div class="w-full mx-auto flex flex-wrap">
+            <div class="flex w-full lg:w-1/2 ">
+                <div class="px-8">
+                    <h3 class="font-bold text-gray-900">About</h3>
+                    <p class="py-4 text-gray-600 text-sm">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel mi ut felis tempus commodo
+                        nec id erat. Suspendisse consectetur dapibus velit ut lacinia.
+                    </p>
+                </div>
+            </div>
+            <div class="flex w-full lg:w-1/2 lg:justify-end lg:text-right">
+                <div class="px-8">
+                    <h3 class="font-bold text-gray-900">Social</h3>
+                    <ul class="list-reset items-center text-sm pt-3">
+                        <li>
+                            <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:underline py-1"
+                                href="#">Add social links</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    /*Toggle dropdown list*/
+    /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
+    
+    var navMenuDiv = document.getElementById("nav-content");
+    var navMenu = document.getElementById("nav-toggle");
+    
+    var helpMenuDiv = document.getElementById("menu-content");
+    var helpMenu = document.getElementById("menu-toggle");
+    
+    document.onclick = check;
+    
+    function check(e){
+      var target = (e && e.target) || (event && event.srcElement);
+    
+     
+      //Nav Menu
+      if (!checkParent(target, navMenuDiv)) {
+        // click NOT on the menu
+        if (checkParent(target, navMenu)) {
+          // click on the link
+          if (navMenuDiv.classList.contains("hidden")) {
+            navMenuDiv.classList.remove("hidden");
+          } else {navMenuDiv.classList.add("hidden");}
+        } else {
+          // click both outside link and outside menu, hide menu
+          navMenuDiv.classList.add("hidden");
+        }
+      }
+      
+      //Help Menu
+      if (!checkParent(target, helpMenuDiv)) {
+        // click NOT on the menu
+        if (checkParent(target, helpMenu)) {
+          // click on the link
+          if (helpMenuDiv.classList.contains("hidden")) {
+            helpMenuDiv.classList.remove("hidden");
+          } else {helpMenuDiv.classList.add("hidden");}
+        } else {
+          // click both outside link and outside menu, hide menu
+          helpMenuDiv.classList.add("hidden");
+        }
+      }
+      
+    }
+    
+    function checkParent(t, elm) {
+      while(t.parentNode) {
+        if( t == elm ) {return true;}
+        t = t.parentNode;
+      }
+      return false;
+    }
+    
+    
+</script>
+
 </div>
